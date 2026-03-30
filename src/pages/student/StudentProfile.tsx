@@ -5,7 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import { User, Hash, Building2, GraduationCap, BookOpen, Lock } from 'lucide-react';
 import type { Student } from '../../types';
 
-export function StudentProfile() {
+export default function StudentProfile() {
   const { user: authUser } = useAuth();
   const user = authUser as Student | null;
 

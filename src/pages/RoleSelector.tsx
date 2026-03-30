@@ -10,8 +10,8 @@ const roles = [
     icon: <GraduationCap className="w-8 h-8" />,
     path: '/login/student',
     gradient: 'from-blue-500 to-blue-600',
-    hoverGradient: 'hover:from-blue-600 hover:to-blue-700',
     iconBg: 'bg-blue-100 dark:bg-blue-900/30',
+    border: 'blue-500',
     iconColor: 'text-blue-600 dark:text-blue-400'
   },
   {
@@ -20,8 +20,8 @@ const roles = [
     icon: <BookOpen className="w-8 h-8" />,
     path: '/login/lecturer',
     gradient: 'from-green-500 to-emerald-600',
-    hoverGradient: 'hover:from-green-600 hover:to-emerald-700',
     iconBg: 'bg-green-100 dark:bg-green-900/30',
+    border: 'emerald-400',
     iconColor: 'text-green-600 dark:text-green-400'
   },
   {
@@ -30,8 +30,8 @@ const roles = [
     icon: <Building className="w-8 h-8" />,
     path: '/login/faculty',
     gradient: 'from-purple-500 to-purple-600',
-    hoverGradient: 'hover:from-purple-600 hover:to-purple-700',
     iconBg: 'bg-purple-100 dark:bg-purple-900/30',
+    border: 'purple-600',
     iconColor: 'text-purple-600 dark:text-purple-400'
   },
   {
@@ -40,8 +40,8 @@ const roles = [
     icon: <Shield className="w-8 h-8" />,
     path: '/login/admin',
     gradient: 'from-red-500 to-rose-600',
-    hoverGradient: 'hover:from-red-600 hover:to-rose-700',
     iconBg: 'bg-red-100 dark:bg-red-900/30',
+    border: 'red-600',
     iconColor: 'text-red-600 dark:text-red-400'
   }
 ];
@@ -97,7 +97,7 @@ export default function RoleSelector() {
                   className="group"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <Card className="h-full hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1 border-2 hover:border-blue-200 dark:hover:border-blue-800 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm overflow-hidden relative">
+                  <Card className={`h-full hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1 border-2 hover:border-${role.border} bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm overflow-hidden relative`}>
                     {/* Gradient overlay on hover */}
                     <div className={`absolute inset-0 bg-linear-to-br ${role.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
 

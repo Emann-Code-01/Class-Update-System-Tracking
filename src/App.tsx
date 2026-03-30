@@ -13,7 +13,7 @@ import AdminLogin from './pages/auth/AdminLogin';
 // // Student Pages
 import StudentLogin from './pages/auth/StudentLogin';
 import StudentDashboard from './pages/student/StudentDashboard';
-// import StudentProfile from './pages/student/StudentProfile';
+import StudentProfile from './pages/student/StudentProfile';
 
 // Lecturer Pages
 // import LecturerDashboard from './pages/lecturer/LecturerDashboard';
@@ -56,14 +56,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            {/* <Route
-                path="/student/profile"
-                element={
-                  <ProtectedRoute allowedRoles={['student']}>
-                    <StudentProfile />
-                  </ProtectedRoute>
-                }
-              /> */}
+            <Route
+              path="/student/profile"
+              element={
+                <ProtectedRoute allowedRoles={['student']}>
+                  <StudentProfile />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Lecturer Routes */}
             {/* <Route
