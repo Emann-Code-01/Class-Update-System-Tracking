@@ -14,18 +14,21 @@ export default function FacultyLogin() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     const admin = mockFacultyAdmins.find(
       (a) => a.email === email && a.password === password
     );
 
     if (admin) {
-      login({
-        identifier: email && password,
-        type: 'admin',
+      const success = await login({
+        identifier: email,
+        password: password,
+        type: 'faculty',
       });
-      navigate('/faculty/venues');
+      if (success) {
+        navigate('/faculty/venues');
+      }
     } else {
       alert('Invalid credentials. Try: r.taylor@university.edu / faculty123');
     }

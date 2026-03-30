@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import React, { createContext, useContext, useState } from 'react';
 import type { Venue, Course, Session } from '../types';
-import { dummyVenues, dummyCourses, dummySessions } from '../data/dummyData';
+import { mockVenues, mockCourses, mockSessions } from '../data/mockData';
 
 interface DataContextType {
   venues: Venue[];
@@ -13,26 +14,28 @@ interface DataContextType {
   addSession: (session: Session) => void;
   updateSession: (id: string, session: Partial<Session>) => void;
   deleteSession: (id: string) => void;
-  importStudents: (students: any[]) => void;
-  importLecturers: (lecturers: any[]) => void;
+  importStudents: (students: string[]) => void;
+  importLecturers: (lecturers: string[]) => void;
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
-export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [venues, setVenues] = useState<Venue[]>(dummyVenues);
-  const [courses, setCourses] = useState<Course[]>(dummyCourses);
-  const [sessions, setSessions] = useState<Session[]>(dummySessions);
-
-  useEffect(() => {
-    const savedData = localStorage.getItem('appData');
-    if (savedData) {
-      const { venues, courses, sessions } = JSON.parse(savedData);
-      setVenues(venues);
-      setCourses(courses);
-      setSessions(sessions);
+const getInitialAppData = () => {
+  const savedData = localStorage.getItem('appData');
+  if (savedData) {
+    try {
+      return JSON.parse(savedData);
+    } catch (error) {
+      console.error('Error parsing appData:', error);
     }
-  }, []);
+  }
+  return { venues: mockVenues, courses: mockCourses, sessions: mockSessions };
+};
+
+export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [venues, setVenues] = useState<Venue[]>(() => getInitialAppData().venues);
+  const [courses, setCourses] = useState<Course[]>(() => getInitialAppData().courses);
+  const [sessions, setSessions] = useState<Session[]>(() => getInitialAppData().sessions);
 
   const saveData = (newVenues: Venue[], newCourses: Course[], newSessions: Session[]) => {
     const dataToSave = { venues: newVenues, courses: newCourses, sessions: newSessions };
@@ -81,13 +84,13 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     saveData(venues, courses, newSessions);
   };
 
-  const importStudents = (newStudents: any[]) => {
+  const importStudents = (newStudents: string[]) => {
     // This would typically add to a students list stored in context
     // For now, it's just a placeholder
     console.log('Importing students:', newStudents);
   };
 
-  const importLecturers = (newLecturers: any[]) => {
+  const importLecturers = (newLecturers: string[]) => {
     // This would typically add to a lecturers list stored in context
     // For now, it's just a placeholder
     console.log('Importing lecturers:', newLecturers);

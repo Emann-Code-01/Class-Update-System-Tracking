@@ -5,7 +5,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Pages
-import LandingPage from './pages/LandingPage';
+import RoleSelector from './pages/RoleSelector';
 import LecturerLogin from './pages/auth/LecturerLogin';
 import FacultyLogin from './pages/auth/FacultyLogin';
 import AdminLogin from './pages/auth/AdminLogin';
@@ -39,7 +39,7 @@ function App() {
         <DataProvider>
           <Routes>
             {/* Landing */}
-            <Route path="/" element={<LandingPage />} />
+            <Route path="/" element={<RoleSelector />} />
 
             {/* Auth Routes */}
             <Route path="/login/student" element={<StudentLogin />} />

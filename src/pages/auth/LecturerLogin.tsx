@@ -14,18 +14,20 @@ export default function LecturerLogin() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     const lecturer = mockLecturers.find(
       (l) => l.staffId === staffId && l.verificationCode === verificationCode
     );
 
     if (lecturer) {
-      login({
+      const success = await login({
         identifier: verificationCode,
         type: 'lecturer'
       });
-      navigate('/lecturer/dashboard');
+      if (success) {
+        navigate('/lecturer/dashboard');
+      }
     } else {
       alert('Invalid credentials. Try: STAFF001 / A1B2C3D4');
     }

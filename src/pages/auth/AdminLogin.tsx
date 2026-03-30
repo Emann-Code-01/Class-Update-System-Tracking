@@ -14,15 +14,18 @@ export default function AdminLogin() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (email === mockSchoolAdmin.email && password === mockSchoolAdmin.password) {
-      login({
-        identifier: email && password,
+      const success = await login({
+        identifier: email,
+        password: password,
         type: 'admin',
       });
-      navigate('/admin/venues');
+      if (success) {
+        navigate('/admin/venues');
+      }
     } else {
       alert('Invalid credentials. Try: admin@university.edu / admin123');
     }

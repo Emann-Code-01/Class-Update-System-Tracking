@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import React, { createContext, useContext, useState } from 'react';
 import type { User, UserRole } from '../types';
-import { dummyStudents, dummyLecturers, dummyFacultyAdmin, dummySchoolAdmin } from '../data/dummyData';
+import { mockStudents, mockLecturers, mockFacultyAdmins, mockSchoolAdmin } from '../data/mockData';
 
 interface AuthContextType {
   isLoggedIn: boolean;
@@ -18,20 +19,22 @@ interface LoginCredentials {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
-  const [role, setRole] = useState<UserRole | null>(null);
-
-  useEffect(() => {
-    const savedAuth = localStorage.getItem('authState');
-    if (savedAuth) {
-      const { user, role, isLoggedIn } = JSON.parse(savedAuth);
-      setUser(user);
-      setRole(role);
-      setIsLoggedIn(isLoggedIn);
+const getInitialAuthState = () => {
+  const savedAuth = localStorage.getItem('authState');
+  if (savedAuth) {
+    try {
+      return JSON.parse(savedAuth);
+    } catch (error) {
+      console.error('Error parsing authState:', error);
     }
-  }, []);
+  }
+  return { isLoggedIn: false, user: null, role: null };
+};
+
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => getInitialAuthState().isLoggedIn);
+  const [user, setUser] = useState<User | null>(() => getInitialAuthState().user);
+  const [role, setRole] = useState<UserRole | null>(() => getInitialAuthState().role);
 
   const login = async (credentials: LoginCredentials): Promise<boolean> => {
     const { identifier, password, type } = credentials;
@@ -39,21 +42,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     let foundUser: User | null = null;
 
     if (type === 'student') {
-      foundUser = dummyStudents.find((s) => s.matricNumber === identifier) || null;
+      const student = mockStudents.find((s) => s.matricNumber === identifier);
+      if (student) foundUser = { ...student, role: 'student', email: '' } as User;
     } else if (type === 'lecturer') {
-      // Staff ID: L001, Password: 1234
-      if (identifier === 'L001' && password === '1234') {
-        foundUser = dummyLecturers.find((l) => l.staffId === 'L001') || null;
-      }
+      const lecturer = mockLecturers.find((l) => l.verificationCode === identifier);
+      if (lecturer) foundUser = { ...lecturer, role: 'lecturer', email: lecturer.email } as User;
     } else if (type === 'faculty') {
-      // Email: faculty@science.edu, Password: pass
-      if (identifier === 'faculty@science.edu' && password === 'pass') {
-        foundUser = dummyFacultyAdmin;
-      }
+      const faculty = mockFacultyAdmins.find((f) => f.email === identifier && f.password === password);
+      if (faculty) foundUser = { ...faculty, role: 'faculty' } as User;
     } else if (type === 'admin') {
-      // Email: admin@school.edu, Password: admin
-      if (identifier === 'admin@school.edu' && password === 'admin') {
-        foundUser = dummySchoolAdmin;
+      if (identifier === mockSchoolAdmin.email && password === mockSchoolAdmin.password) {
+        foundUser = { ...mockSchoolAdmin, role: 'admin' } as User;
       }
     }
 

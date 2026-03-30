@@ -46,7 +46,7 @@ const roles = [
   }
 ];
 
-export default function LandingPage() {
+export default function RoleSelector() {
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-50 via-blue-50/30 to-gray-50 dark:from-gray-900 dark:via-blue-950/20 dark:to-gray-900 relative overflow-hidden">
       {/* Background decoration */}

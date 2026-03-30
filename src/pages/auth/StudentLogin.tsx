@@ -13,17 +13,19 @@ export default function StudentLogin() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     const student = mockStudents.find((s) => s.matricNumber === matricNumber);
 
     if (student) {
-      login({
+      const success = await login({
         identifier: matricNumber,
         type: 'student'
       });
-      navigate('/student/dashboard');
-      console.log('Signed in successfully');
+      if (success) {
+        navigate('/student/dashboard');
+        console.log('Signed in successfully');
+      }
     } else {
       alert('Invalid matric number. Try: CS/2021/001');
       console.log('Signed in failed');
