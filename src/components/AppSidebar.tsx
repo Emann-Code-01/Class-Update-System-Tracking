@@ -1,8 +1,10 @@
 import { Home, User, MapPin, Users, BookOpen, Calendar, UserCog, Menu, X, GraduationCap, BookOpen as BookOpenIcon, Building, Shield } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
+import { Badge } from './ui/Badge';
+import { Button } from './ui/Button';
 import { useAuth } from '../context/AuthContext';
 import { useState } from 'react';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, RefreshCw } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import type { UserRole } from '../types';
 
@@ -73,6 +75,12 @@ export function AppSidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
+  const [lastSync, setLastSync] = useState(new Date());
+
+  const handleSync = () => {
+    setLastSync(new Date());
+  };
+
   if (!user) return null;
 
   const navigation = roleNavigation[user.role];
@@ -114,20 +122,34 @@ export function AppSidebar() {
         })}
       </nav>
 
-      <button
-        onClick={toggleTheme}
-        className='flex m-2 lg:hidden'
-        aria-label="Toggle theme"
-      >
-        <div className='flex p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 border border-transparent hover:border-gray-200 dark:border-gray-700 dark:hover:border-gray-600 cursor-pointer'>
-          {theme === 'light' ? (
-            <Moon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-          ) : (
-            <Sun className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-          )}
+      <div className='lg:hidden m-2 space-y-1.5'>
+        <div className='flex gap-2'>
+          <button
+            onClick={toggleTheme}
+            className='flex p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 border border-transparent hover:border-gray-200 dark:border-gray-700 dark:hover:border-gray-600 cursor-pointer'
+            aria-label="Toggle theme"
+          >
+            {theme === 'light' ? (
+              <Moon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+            ) : (
+              <Sun className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+            )}
+          </button>
+          {location.pathname === '/student/dashboard' &&
+            <div className="flex flex-col gap-2">
+              <Badge variant="outline" className="flex items-center gap-1.5 p-2.5">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-xs">Last sync: {lastSync.toLocaleTimeString()}</span>
+              </Badge>
+            </div>}
         </div>
-
-      </button>
+        {location.pathname === '/student/dashboard' &&
+          <Button variant="outline" size="sm" onClick={handleSync} className="gap-2 cursor-pointer bg-transparent">
+            <RefreshCw className="w-4 h-4" />
+            Sync Now
+          </Button>
+        }
+      </div>
 
       <div className="border-t border-gray-200 dark:border-gray-700">
         <button

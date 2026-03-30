@@ -22,7 +22,7 @@ export default function StudentDashboard() {
   return (
     <DashboardLayout>
       <AppHeader title="Today's Schedule">
-        <div className="flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-2">
           <Badge variant="outline" className="flex items-center gap-1.5 px-3 py-1">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
             <span className="text-xs">Last sync: {lastSync.toLocaleTimeString()}</span>

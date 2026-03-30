@@ -10,7 +10,7 @@ export function AppHeader({ title, children }: AppHeaderProps) {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 pl-3 pr-6 py-5 shadow-sm">
+    <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 px-6 py-5 shadow-sm">
       <div className="flex flex-col md:flex-row lg:items-center lg:justify-between">
         <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">{title}</h1>
         <div className="flex items-center gap-4">
