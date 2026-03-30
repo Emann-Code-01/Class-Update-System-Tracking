@@ -17,7 +17,7 @@ export function AppHeader({ title, children }: AppHeaderProps) {
           {children}
           <button
             onClick={toggleTheme}
-            className="flex p-2.5 rounded-xl border-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 border hover:border-gray-400 dark:border-gray-700 dark:hover:border-gray-600 cursor-pointer"
+            className="lg:flex p-2.5 rounded-xl border-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 border hover:border-gray-400 dark:border-gray-700 dark:hover:border-gray-600 cursor-pointer hidden"
             aria-label="Toggle theme"
           >
             {theme === 'light' ? (
