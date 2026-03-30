@@ -126,13 +126,20 @@ export function AppSidebar() {
         <div className='flex gap-2'>
           <button
             onClick={toggleTheme}
-            className='flex p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 border border-transparent hover:border-gray-200 dark:border-gray-700 dark:hover:border-gray-600 cursor-pointer'
+            className='flex p-2.5 rounded-xl border-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 border hover:border-gray-400 dark:border-gray-700 dark:hover:border-gray-600 cursor-pointer'
             aria-label="Toggle theme"
           >
             {theme === 'light' ? (
-              <Moon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+              <div className='flex items-center gap-2'>
+                <Moon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                {location.pathname !== '/student/dashboard' && <p>Dark Mode</p>}
+              </div>
             ) : (
-              <Sun className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+              <div className='flex items-center gap-2'>
+                <Sun className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                {location.pathname !== '/student/dashboard' && <p>Light Mode</p>}
+              </div>
+
             )}
           </button>
           {location.pathname === '/student/dashboard' &&
