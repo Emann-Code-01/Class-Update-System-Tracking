@@ -10,6 +10,7 @@ export interface User {
 export interface Student extends User {
   matricNumber: string;
   department: string;
+  faculty: string;
   yearOfStudy: number;
 }
 

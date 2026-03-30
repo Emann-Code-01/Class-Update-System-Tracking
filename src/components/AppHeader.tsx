@@ -17,7 +17,7 @@ export function AppHeader({ title, children }: AppHeaderProps) {
           {children}
           <button
             onClick={toggleTheme}
-            className="p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
+            className="p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 border border-transparent hover:border-gray-200 dark:border-gray-700 dark:hover:border-gray-600 cursor-pointer"
             aria-label="Toggle theme"
           >
             {theme === 'light' ? (

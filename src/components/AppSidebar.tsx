@@ -77,19 +77,21 @@ export function AppSidebar() {
 
   const SidebarContent = () => (
     <div className="flex flex-col h-full bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-r border-gray-200 dark:border-gray-700 shadow-sm">
-      <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-        <div className="flex items-center gap-3 mb-3">
+      <div className="py-4.25 px-6! border-b border-gray-200 dark:border-gray-700">
+        <div className="flex items-center gap-3">
           <div className={`${config.iconBg} ${config.iconColor} p-2.5 rounded-xl`}>
             {config.icon}
           </div>
-          <h2 className="font-semibold text-lg text-gray-900 dark:text-white">
-            {config.title}
-          </h2>
+          <div className=''>
+            <h2 className="font-semibold text-lg text-gray-900 dark:text-white">
+              {config.title}
+            </h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{user.name}</p>
+          </div>
         </div>
-        <p className="text-sm text-gray-600 dark:text-gray-400 ml-12">{user.name}</p>
       </div>
 
-      <nav className="flex-1 p-4 space-y-1">
+      <nav className="flex-1 py-4 space-y-1">
         {navigation.map((item) => {
           const isActive = location.pathname === item.path;
           return (
@@ -97,7 +99,7 @@ export function AppSidebar() {
               key={item.path}
               to={item.path}
               onClick={() => setIsOpen(false)}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${isActive
+              className={`flex items-center gap-3 px-4 py-3 transition-all duration-300 ${isActive
                 ? `bg-linear-to-r ${config.gradient} text-white shadow-lg`
                 : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/50'
                 }`}
@@ -109,13 +111,13 @@ export function AppSidebar() {
         })}
       </nav>
 
-      <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+      <div className="border-t border-gray-200 dark:border-gray-700">
         <button
           onClick={() => {
             logout();
             window.location.href = '/';
           }}
-          className="w-full px-4 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all duration-200 border border-transparent hover:border-red-200 dark:hover:border-red-800"
+          className="w-full px-4 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 border border-transparent hover:border-red-200 dark:hover:border-red-800 cursor-pointer"
         >
           Logout
         </button>

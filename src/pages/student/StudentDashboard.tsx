@@ -27,7 +27,7 @@ export default function StudentDashboard() {
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
             <span className="text-xs">Last sync: {lastSync.toLocaleTimeString()}</span>
           </Badge>
-          <Button variant="outline" size="sm" onClick={handleSync} className="gap-2">
+          <Button variant="outline" size="sm" onClick={handleSync} className="gap-2 cursor-pointer">
             <RefreshCw className="w-4 h-4" />
             Sync Now
           </Button>
@@ -45,7 +45,7 @@ export default function StudentDashboard() {
 
         <div className="grid gap-4">
           {todaySessions.map((session) => (
-            <Card key={session.id} className="hover:shadow-lg transition-all duration-200 border-l-4 border-l-blue-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+            <Card key={session.id} className="hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div className="space-y-3">
