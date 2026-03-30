@@ -10,14 +10,14 @@ export function AppHeader({ title, children }: AppHeaderProps) {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 px-6 py-5 shadow-sm">
-      <div className="flex items-center justify-between">
+    <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 pl-3 pr-6 py-5 shadow-sm">
+      <div className="flex flex-col md:flex-row lg:items-center lg:justify-between">
         <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">{title}</h1>
         <div className="flex items-center gap-4">
           {children}
           <button
             onClick={toggleTheme}
-            className="p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 border border-transparent hover:border-gray-200 dark:border-gray-700 dark:hover:border-gray-600 cursor-pointer"
+            className="p-2.5 hidden lg:flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 border border-transparent hover:border-gray-200 dark:border-gray-700 dark:hover:border-gray-600 cursor-pointer"
             aria-label="Toggle theme"
           >
             {theme === 'light' ? (

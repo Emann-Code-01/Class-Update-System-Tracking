@@ -2,6 +2,8 @@ import { Home, User, MapPin, Users, BookOpen, Calendar, UserCog, Menu, X, Gradua
 import { Link, useLocation } from 'react-router';
 import { useAuth } from '../context/AuthContext';
 import { useState } from 'react';
+import { Sun, Moon } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 import type { UserRole } from '../types';
 
 interface NavItem {
@@ -69,6 +71,7 @@ export function AppSidebar() {
   const { user, logout } = useAuth();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   if (!user) return null;
 
@@ -111,6 +114,21 @@ export function AppSidebar() {
         })}
       </nav>
 
+      <button
+        onClick={toggleTheme}
+        className='flex m-2 lg:hidden'
+        aria-label="Toggle theme"
+      >
+        <div className='flex p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 border border-transparent hover:border-gray-200 dark:border-gray-700 dark:hover:border-gray-600 cursor-pointer'>
+          {theme === 'light' ? (
+            <Moon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+          ) : (
+            <Sun className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+          )}
+        </div>
+
+      </button>
+
       <div className="border-t border-gray-200 dark:border-gray-700">
         <button
           onClick={() => {
@@ -130,7 +148,7 @@ export function AppSidebar() {
       {/* Mobile toggle */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2.5 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow"
+        className="lg:hidden absolute top-4 right-4 z-50 p-2.5 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow"
       >
         {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
       </button>

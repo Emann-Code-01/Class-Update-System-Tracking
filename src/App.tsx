@@ -10,7 +10,7 @@ import LecturerLogin from './pages/auth/LecturerLogin';
 import FacultyLogin from './pages/auth/FacultyLogin';
 import AdminLogin from './pages/auth/AdminLogin';
 
-// // Student Pages
+// Student Pages
 import StudentLogin from './pages/auth/StudentLogin';
 import StudentDashboard from './pages/student/StudentDashboard';
 import StudentProfile from './pages/student/StudentProfile';
@@ -19,12 +19,12 @@ import StudentProfile from './pages/student/StudentProfile';
 import LecturerDashboard from './pages/lecturer/LecturerDashboard';
 import LecturerProfile from './pages/lecturer/LecturerProfile';
 
-// // Faculty Pages
+// Faculty Pages
 import FacultyVenues from './pages/faculty/FacultyVenues';
 import FacultyLecturers from './pages/faculty/FacultyLecturers';
 import FacultyCourses from './pages/faculty/FacultyCourses';
 
-// // Admin Pages
+// Admin Pages
 // import AdminVenues from './pages/admin/AdminVenues';
 // import AdminStudents from './pages/admin/AdminStudents';
 // import AdminLecturers from './pages/admin/AdminLecturers';
