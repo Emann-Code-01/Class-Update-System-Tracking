@@ -20,9 +20,9 @@ import LecturerDashboard from './pages/lecturer/LecturerDashboard';
 import LecturerProfile from './pages/lecturer/LecturerProfile';
 
 // // Faculty Pages
-// import FacultyVenues from './pages/faculty/FacultyVenues';
-// import FacultyLecturers from './pages/faculty/FacultyLecturers';
-// import FacultyCourses from './pages/faculty/FacultyCourses';
+import FacultyVenues from './pages/faculty/FacultyVenues';
+import FacultyLecturers from './pages/faculty/FacultyLecturers';
+import FacultyCourses from './pages/faculty/FacultyCourses';
 
 // // Admin Pages
 // import AdminVenues from './pages/admin/AdminVenues';
@@ -84,30 +84,30 @@ function App() {
             />
 
             {/* Faculty Routes */}
-            {/* <Route
-                path="/faculty/venues"
-                element={
-                  <ProtectedRoute allowedRoles={['faculty']}>
-                    <FacultyVenues />
-                  </ProtectedRoute>
-                }
-              /> */}
-            {/* <Route
-                path="/faculty/lecturers"
-                element={
-                  <ProtectedRoute allowedRoles={['faculty']}>
-                    <FacultyLecturers />
-                  </ProtectedRoute>
-                }
-              /> */}
-            {/* <Route
-                path="/faculty/courses"
-                element={
-                  <ProtectedRoute allowedRoles={['faculty']}>
-                    <FacultyCourses />
-                  </ProtectedRoute>
-                }
-              /> */}
+            <Route
+              path="/faculty/venues"
+              element={
+                <ProtectedRoute allowedRoles={['faculty']}>
+                  <FacultyVenues />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/faculty/lecturers"
+              element={
+                <ProtectedRoute allowedRoles={['faculty']}>
+                  <FacultyLecturers />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/faculty/courses"
+              element={
+                <ProtectedRoute allowedRoles={['faculty']}>
+                  <FacultyCourses />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Admin Routes */}
             {/* <Route
