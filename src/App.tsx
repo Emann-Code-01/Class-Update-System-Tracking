@@ -16,8 +16,8 @@ import StudentDashboard from './pages/student/StudentDashboard';
 import StudentProfile from './pages/student/StudentProfile';
 
 // Lecturer Pages
-// import LecturerDashboard from './pages/lecturer/LecturerDashboard';
-// import LecturerProfile from './pages/lecturer/LecturerProfile';
+import LecturerDashboard from './pages/lecturer/LecturerDashboard';
+import LecturerProfile from './pages/lecturer/LecturerProfile';
 
 // // Faculty Pages
 // import FacultyVenues from './pages/faculty/FacultyVenues';
@@ -66,22 +66,22 @@ function App() {
             />
 
             {/* Lecturer Routes */}
-            {/* <Route
-                path="/lecturer/dashboard"
-                element={
-                  <ProtectedRoute allowedRoles={['lecturer']}>
-                    <LecturerDashboard />
-                  </ProtectedRoute>
-                }
-              /> */}
-            {/* <Route
-                path="/lecturer/profile"
-                element={
-                  <ProtectedRoute allowedRoles={['lecturer']}>
-                    <LecturerProfile />
-                  </ProtectedRoute>
-                }
-              /> */}
+            <Route
+              path="/lecturer/dashboard"
+              element={
+                <ProtectedRoute allowedRoles={['lecturer']}>
+                  <LecturerDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/lecturer/profile"
+              element={
+                <ProtectedRoute allowedRoles={['lecturer']}>
+                  <LecturerProfile />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Faculty Routes */}
             {/* <Route
