@@ -25,12 +25,12 @@ import FacultyLecturers from './pages/faculty/FacultyLecturers';
 import FacultyCourses from './pages/faculty/FacultyCourses';
 
 // Admin Pages
-// import AdminVenues from './pages/admin/AdminVenues';
-// import AdminStudents from './pages/admin/AdminStudents';
-// import AdminLecturers from './pages/admin/AdminLecturers';
-// import AdminCourses from './pages/admin/AdminCourses';
-// import AdminSessions from './pages/admin/AdminSessions';
-// import AdminUsers from './pages/admin/AdminUsers';
+import AdminVenues from './pages/admin/AdminVenues';
+import AdminStudents from './pages/admin/AdminStudents';
+import AdminLecturers from './pages/admin/AdminLecturers';
+import AdminCourses from './pages/admin/AdminCourses';
+import AdminSessions from './pages/admin/AdminSessions';
+import AdminUsers from './pages/admin/AdminUsers';
 
 function App() {
   return (
@@ -110,54 +110,54 @@ function App() {
             />
 
             {/* Admin Routes */}
-            {/* <Route
-                path="/admin/venues"
-                element={
-                  <ProtectedRoute allowedRoles={['admin']}>
-                    <AdminVenues />
-                  </ProtectedRoute>
-                }
-              /> */}
-            {/* <Route
-                path="/admin/students"
-                element={
-                  <ProtectedRoute allowedRoles={['admin']}>
-                    <AdminStudents />
-                  </ProtectedRoute>
-                }
-              /> */}
-            {/* <Route
-                path="/admin/lecturers"
-                element={
-                  <ProtectedRoute allowedRoles={['admin']}>
-                    <AdminLecturers />
-                  </ProtectedRoute>
-                }
-              /> */}
-            {/* <Route
-                path="/admin/courses"
-                element={
-                  <ProtectedRoute allowedRoles={['admin']}>
-                    <AdminCourses />
-                  </ProtectedRoute>
-                }
-              /> */}
-            {/* <Route
-                path="/admin/sessions"
-                element={
-                  <ProtectedRoute allowedRoles={['admin']}>
-                    <AdminSessions />
-                  </ProtectedRoute>
-                }
-              /> */}
-            {/* <Route
-                path="/admin/users"
-                element={
-                  <ProtectedRoute allowedRoles={['admin']}>
-                    <AdminUsers />
-                  </ProtectedRoute>
-                }
-              /> */}
+            <Route
+              path="/admin/venues"
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <AdminVenues />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/students"
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <AdminStudents />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/lecturers"
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <AdminLecturers />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/courses"
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <AdminCourses />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/sessions"
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <AdminSessions />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/users"
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <AdminUsers />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Catch all */}
             <Route path="*" element={<Navigate to="/" replace />} />
