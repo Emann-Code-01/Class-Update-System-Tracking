@@ -16,7 +16,7 @@ const roles = [
   },
   {
     title: 'Lecturer',
-    description: 'Manage teaching sessions, update schedules, and communicate with students',
+    description: 'Manage teaching sessions, update scheduxles, and communicate with students',
     icon: <BookOpen className="w-8 h-8" />,
     path: '/login/lecturer',
     gradient: 'from-green-500 to-emerald-600',
